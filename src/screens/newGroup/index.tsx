@@ -1,4 +1,4 @@
-import { Button, Header, HighLight } from "@/components";
+import { Button, Header, HighLight, Input } from "@/components";
 import * as S from "./styles";
 
 export const NewGroup: React.FC = () => {
@@ -11,7 +11,8 @@ export const NewGroup: React.FC = () => {
           title="Nova turma"
           subtitle="crie a turma para adicionar as pessoas"
         />
-        <Button label="Criar" />
+        <Input placeholder="Nome da turma" />
+        <Button label="Criar" style={{ marginTop: 20 }} />
       </S.Content>
     </S.Container>
   );
