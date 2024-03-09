@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { LayoutProps } from "./types";
 
 export const Button = styled.TouchableOpacity<LayoutProps>`
@@ -22,7 +22,10 @@ export const Button = styled.TouchableOpacity<LayoutProps>`
 `;
 
 export const Text = styled.Text`
-  font-size: ${({ theme }) => theme.fontSizes.medium}px;
-  color: ${({ theme }) => theme.colors.white};
   font-weight: 900;
+
+  ${({ theme }) => css`
+    font-size: ${theme.fontSizes.medium}px;
+    color: ${theme.colors.white};
+  `}
 `;
