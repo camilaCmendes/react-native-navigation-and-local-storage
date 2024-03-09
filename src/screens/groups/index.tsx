@@ -1,4 +1,4 @@
-import { Header, HighLight } from "@/components";
+import { Button, Header, HighLight } from "@/components";
 import { View } from "react-native";
 import { GroupCard, ListEmpty } from "./components";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { FlatList } from "react-native";
 import * as S from "./styles";
 
 export const Groups: React.FC = () => {
-  const [groups, setGroups] = useState<string[]>([]);
+  const [groups, setGroups] = useState<string[]>(["grupo"]);
   return (
     <S.Container>
       <Header />
@@ -23,6 +23,7 @@ export const Groups: React.FC = () => {
           <ListEmpty message="Que tal cadastrar a primeira turma?" />
         }
       />
+      <Button label="Criar nova turma" />
     </S.Container>
   );
 };

@@ -2,8 +2,12 @@ import styled from "styled-components/native";
 import { LayoutProps } from "./types";
 
 export const Button = styled.TouchableOpacity<LayoutProps>`
-  padding: 10px;
-  border-radius: 8px;
+  flex: 1;
+  min-height: 56px;
+  max-height: 56px;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
 
   ${({ layout, theme, isActive }) => {
     if (layout === "primary" && !isActive)
@@ -18,6 +22,7 @@ export const Button = styled.TouchableOpacity<LayoutProps>`
 `;
 
 export const Text = styled.Text`
+  font-size: ${({ theme }) => theme.fontSizes.medium}px;
   color: ${({ theme }) => theme.colors.white};
   font-weight: 900;
 `;

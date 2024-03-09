@@ -3,11 +3,11 @@ import * as S from "./styles";
 
 export const Button: React.FC<ButtonProps> = ({
   label,
-  onPress,
   layout = "primary",
+  ...rest
 }) => {
   return (
-    <S.Button onPress={onPress} layout={layout}>
+    <S.Button {...rest} layout={layout}>
       <S.Text>{label}</S.Text>
     </S.Button>
   );

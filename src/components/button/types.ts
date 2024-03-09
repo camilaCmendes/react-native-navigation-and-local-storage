@@ -1,3 +1,5 @@
+import { TouchableOpacityProps } from "react-native";
+
 export type Layout = "primary" | "secondary";
 
 export interface LayoutProps {
@@ -5,7 +7,6 @@ export interface LayoutProps {
   isActive?: boolean;
 }
 
-export interface ButtonProps extends LayoutProps {
-  onPress: () => void;
+export interface ButtonProps extends LayoutProps, TouchableOpacityProps {
   label: string;
 }
