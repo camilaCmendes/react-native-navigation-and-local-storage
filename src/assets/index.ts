@@ -5,5 +5,17 @@ import Plus from "./plus.svg";
 import UsersThree from "./usersThree.svg";
 import UsersThreeFill from "./usersThreeFill.svg";
 import Logo from "./logo.svg";
+import Close from "./close.svg";
+import Person from "./person.svg";
 
-export { CareLeft, List, Minus, Plus, UsersThree, UsersThreeFill, Logo };
+export {
+  CareLeft,
+  List,
+  Minus,
+  Plus,
+  UsersThree,
+  UsersThreeFill,
+  Logo,
+  Close,
+  Person,
+};
