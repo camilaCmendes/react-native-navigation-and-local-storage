@@ -3,10 +3,11 @@ import * as S from "./styles";
 import { Filter } from "./components/filter";
 import { FlatList } from "react-native";
 import { useState } from "react";
+import { PlayerCard } from "./components/playerCard";
 
 export const Players: React.FC = () => {
   const [team, setTeam] = useState("time a");
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(["Camila", "Leonardo"]);
   return (
     <>
       <Header showBackButton />
@@ -33,6 +34,14 @@ export const Players: React.FC = () => {
         />
         <S.NumbersOfPlayers>{players.length}</S.NumbersOfPlayers>
       </S.HeaderList>
+
+      <FlatList
+        data={players}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <PlayerCard name={item} onRemove={() => null} />
+        )}
+      />
     </>
   );
 };
