@@ -1,4 +1,11 @@
-import { ButtonIcon, Header, HighLight, Input } from "@/components";
+import {
+  Button,
+  ButtonIcon,
+  Header,
+  HighLight,
+  Input,
+  ListEmpty,
+} from "@/components";
 import * as S from "./styles";
 import { Filter } from "./components/filter";
 import { FlatList } from "react-native";
@@ -41,7 +48,16 @@ export const Players: React.FC = () => {
         renderItem={({ item }) => (
           <PlayerCard name={item} onRemove={() => null} />
         )}
+        ListEmptyComponent={() => (
+          <ListEmpty message="Não há pessoas nesse time." />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          { paddingBottom: 100 },
+          players.length === 0 && { flex: 1 },
+        ]}
       />
+      <Button label="Remover Turma" layout="secondary" />
     </>
   );
 };
