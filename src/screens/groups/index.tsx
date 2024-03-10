@@ -1,8 +1,7 @@
-import { Button, Header, HighLight } from "@/components";
-import { View } from "react-native";
-import { GroupCard, ListEmpty } from "./components";
+import { Button, Header, HighLight, ListEmpty } from "@/components";
 import { useState } from "react";
 import { FlatList } from "react-native";
+import { GroupCard } from "./components/groupCard";
 import * as S from "./styles";
 
 export const Groups: React.FC = () => {
