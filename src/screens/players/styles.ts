@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components/native";
 
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.gray600};
+`;
+
 export const Form = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.gray700};

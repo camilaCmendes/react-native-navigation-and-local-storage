@@ -18,7 +18,7 @@ export const Players: React.FC = () => {
   const [team, setTeam] = useState(t("players_teamA"));
   const [players, setPlayers] = useState(["Camila", "Leonardo"]);
   return (
-    <>
+    <S.Container>
       <Header showBackButton />
       <HighLight title={t("players_title")} subtitle={t("players_subtitle")} />
       <S.Form>
@@ -60,6 +60,6 @@ export const Players: React.FC = () => {
         ]}
       />
       <Button label={t("players_removeTeamButton")} layout="secondary" />
-    </>
+    </S.Container>
   );
 };
