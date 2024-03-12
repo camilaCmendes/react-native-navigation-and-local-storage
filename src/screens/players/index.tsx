@@ -11,24 +11,26 @@ import { Filter } from "./components/filter";
 import { FlatList } from "react-native";
 import { useState } from "react";
 import { PlayerCard } from "./components/playerCard";
+import { useTranslation } from "react-i18next";
 
 export const Players: React.FC = () => {
-  const [team, setTeam] = useState("time a");
+  const { t } = useTranslation();
+  const [team, setTeam] = useState(t("players_teamA"));
   const [players, setPlayers] = useState(["Camila", "Leonardo"]);
   return (
     <>
       <Header showBackButton />
-      <HighLight
-        title="Nome da turma"
-        subtitle="adicione a galera e separe os times"
-      />
+      <HighLight title={t("players_title")} subtitle={t("players_subtitle")} />
       <S.Form>
-        <Input placeholder="Nome da pessoa" autoCorrect={false} />
-        <ButtonIcon icon="Plus" onPress={() => null} color={"green700"} />
+        <Input
+          placeholder={t("players_inputPlaceholder")}
+          autoCorrect={false}
+        />
+        <ButtonIcon icon={"Plus"} onPress={() => null} color={"green700"} />
       </S.Form>
       <S.HeaderList>
         <FlatList
-          data={["time a", "time b"]}
+          data={[t("players_teamA"), t("players_teamB")]}
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
             <Filter
@@ -49,7 +51,7 @@ export const Players: React.FC = () => {
           <PlayerCard name={item} onRemove={() => null} />
         )}
         ListEmptyComponent={() => (
-          <ListEmpty message="Não há pessoas nesse time." />
+          <ListEmpty message={t("players_emptyListMessage")} />
         )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[
@@ -57,7 +59,7 @@ export const Players: React.FC = () => {
           players.length === 0 && { flex: 1 },
         ]}
       />
-      <Button label="Remover Turma" layout="secondary" />
+      <Button label={t("players_removeTeamButton")} layout="secondary" />
     </>
   );
 };

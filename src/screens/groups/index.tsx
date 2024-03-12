@@ -3,13 +3,16 @@ import { useState } from "react";
 import { FlatList } from "react-native";
 import { GroupCard } from "./components/groupCard";
 import * as S from "./styles";
+import { useTranslation } from "react-i18next";
 
 export const Groups: React.FC = () => {
   const [groups, setGroups] = useState<string[]>(["grupo"]);
+  const { t } = useTranslation();
+
   return (
     <S.Container>
       <Header />
-      <HighLight title="Turmas" subtitle="Jogue com suas turmas" />
+      <HighLight title={t("groups_title")} subtitle={t("groups_subtitle")} />
 
       <FlatList
         data={groups}
@@ -19,10 +22,10 @@ export const Groups: React.FC = () => {
         )}
         contentContainerStyle={groups.length === 0 && { flex: 1 }}
         ListEmptyComponent={
-          <ListEmpty message="Que tal cadastrar a primeira turma?" />
+          <ListEmpty message={t("groups_emptyListMessage")} />
         }
       />
-      <Button label="Criar nova turma" />
+      <Button label={t("groups_newClassButton")} />
     </S.Container>
   );
 };
