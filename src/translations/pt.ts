@@ -1,4 +1,6 @@
-export const pt = {
+import { Translations } from "./type";
+
+export const pt: Translations = {
   translation: {
     // screens/groups
     groups_title: "Turmas",

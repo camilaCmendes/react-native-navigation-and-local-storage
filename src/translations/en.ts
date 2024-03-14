@@ -1,4 +1,6 @@
-export const en = {
+import { Translations } from "./type";
+
+export const en: Translations = {
   translation: {
     // screens/groups
     groups_title: "Classes",
