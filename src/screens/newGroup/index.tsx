@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as S from "./styles";
+import { groupCreate } from "@/storage/group/groupCreate";
 
 export const NewGroup: React.FC = () => {
   const { t } = useTranslation();
@@ -10,8 +11,13 @@ export const NewGroup: React.FC = () => {
 
   const [group, setGroup] = useState("");
 
-  const handlePlayers = () => {
-    navigation.navigate("players", { group });
+  const handleNew = async () => {
+    try {
+      await groupCreate(group);
+      navigation.navigate("players", { group });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -29,7 +35,7 @@ export const NewGroup: React.FC = () => {
         />
         <Button
           label={t("newGroup_buttonLabel")}
-          onPress={handlePlayers}
+          onPress={handleNew}
           style={{ marginTop: 20 }}
         />
       </S.Content>
