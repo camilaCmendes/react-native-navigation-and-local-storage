@@ -13,7 +13,6 @@ export const en = {
     newGroup_buttonLabel: "Create",
 
     // screens/players
-    players_title: "Class Name",
     players_subtitle: "add people and split the teams",
     players_inputPlaceholder: "Person's name",
     players_emptyListMessage: "No people in this team.",

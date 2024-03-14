@@ -6,21 +6,30 @@ import {
   Input,
   ListEmpty,
 } from "@/components";
-import * as S from "./styles";
-import { Filter } from "./components/filter";
-import { FlatList } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import { useState } from "react";
-import { PlayerCard } from "./components/playerCard";
 import { useTranslation } from "react-i18next";
+import { FlatList } from "react-native";
+import { Filter } from "./components/filter";
+import { PlayerCard } from "./components/playerCard";
+import * as S from "./styles";
+
+type RouteParams = {
+  group: string;
+};
 
 export const Players: React.FC = () => {
   const { t } = useTranslation();
+  const route = useRoute();
+
+  const { group } = route.params as RouteParams;
   const [team, setTeam] = useState(t("players_teamA"));
   const [players, setPlayers] = useState(["Camila", "Leonardo"]);
+
   return (
     <S.Container>
       <Header showBackButton />
-      <HighLight title={t("players_title")} subtitle={t("players_subtitle")} />
+      <HighLight title={group} subtitle={t("players_subtitle")} />
       <S.Form>
         <Input
           placeholder={t("players_inputPlaceholder")}

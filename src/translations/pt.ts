@@ -13,7 +13,6 @@ export const pt = {
     newGroup_buttonLabel: "Criar",
 
     // screens/players
-    players_title: "Nome da turma",
     players_subtitle: "adicione a galera e separe os times",
     players_inputPlaceholder: "Nome da pessoa",
     players_emptyListMessage: "Não há pessoas nesse time.",

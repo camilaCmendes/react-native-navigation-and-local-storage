@@ -1,13 +1,20 @@
 import { Button, Header, HighLight, ListEmpty } from "@/components";
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FlatList } from "react-native";
 import { GroupCard } from "./components/groupCard";
 import * as S from "./styles";
-import { useTranslation } from "react-i18next";
 
 export const Groups: React.FC = () => {
-  const [groups, setGroups] = useState<string[]>(["grupo"]);
   const { t } = useTranslation();
+  const navigation = useNavigation();
+
+  const [groups, setGroups] = useState<string[]>(["grupo"]);
+
+  const handleNewGroup = () => {
+    navigation.navigate("new");
+  };
 
   return (
     <S.Container>
@@ -25,7 +32,7 @@ export const Groups: React.FC = () => {
           <ListEmpty message={t("groups_emptyListMessage")} />
         }
       />
-      <Button label={t("groups_newClassButton")} />
+      <Button label={t("groups_newClassButton")} onPress={handleNewGroup} />
     </S.Container>
   );
 };
