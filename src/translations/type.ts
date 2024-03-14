@@ -10,6 +10,9 @@ type TranslationKeys = {
   newGroup_subtitle: string;
   newGroup_inputPlaceholder: string;
   newGroup_buttonLabel: string;
+  newGroup_alert_title_newGroup: string;
+  newGroup_alert_description_emptyInput: string;
+  newGroup_alert_description_errorCreateNewGroup: string;
 
   // screens/players
   players_subtitle: string;
@@ -18,6 +21,9 @@ type TranslationKeys = {
   players_removeTeamButton: string;
   players_teamA: string;
   players_teamB: string;
+
+  // storage/group
+  storage_appError_groupAlreadyExists: string;
 };
 
 export type Translations = {

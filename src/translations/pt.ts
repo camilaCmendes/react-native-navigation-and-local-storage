@@ -13,6 +13,10 @@ export const pt: Translations = {
     newGroup_subtitle: "Crie a turma para adicionar as pessoas",
     newGroup_inputPlaceholder: "Nome da turma",
     newGroup_buttonLabel: "Criar",
+    newGroup_alert_title_newGroup: "Novo Grupo",
+    newGroup_alert_description_emptyInput: "Informe o nome da turma",
+    newGroup_alert_description_errorCreateNewGroup:
+      "Não foi possível criar um novo grupo",
 
     // screens/players
     players_subtitle: "adicione a galera e separe os times",
@@ -21,5 +25,9 @@ export const pt: Translations = {
     players_removeTeamButton: "Remover Turma",
     players_teamA: "time a",
     players_teamB: "time b",
+
+    // storage/group
+    storage_appError_groupAlreadyExists:
+      "Já existe um grupo cadastrado com esse nome",
   },
 };

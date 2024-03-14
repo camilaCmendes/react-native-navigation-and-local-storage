@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 import { groupCreate } from "@/storage/group/groupCreate";
+import { AppError } from "@/utils/AppError";
+import { Alert } from "react-native";
 
 export const NewGroup: React.FC = () => {
   const { t } = useTranslation();
@@ -13,10 +15,25 @@ export const NewGroup: React.FC = () => {
 
   const handleNew = async () => {
     try {
+      if (group.trim().length === 0) {
+        return Alert.alert(
+          t("newGroup_alert_title_newGroup"),
+          t("newGroup_alert_description_emptyInput")
+        );
+      }
+
       await groupCreate(group);
       navigation.navigate("players", { group });
     } catch (error) {
-      console.log(error);
+      if (error instanceof AppError) {
+        Alert.alert(t("newGroup_alert_title_newGroup"), t(error.message));
+      } else {
+        Alert.alert(
+          t("newGroup_alert_title_newGroup"),
+          t("newGroup_alert_description_errorCreateNewGroup")
+        );
+        console.log(error);
+      }
     }
   };
 

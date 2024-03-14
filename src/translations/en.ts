@@ -13,6 +13,10 @@ export const en: Translations = {
     newGroup_subtitle: "Create the group to add people",
     newGroup_inputPlaceholder: "Group name",
     newGroup_buttonLabel: "Create",
+    newGroup_alert_title_newGroup: "New Group",
+    newGroup_alert_description_emptyInput: "Enter the class name",
+    newGroup_alert_description_errorCreateNewGroup:
+      "Unable to create a new group",
 
     // screens/players
     players_subtitle: "add people and split the teams",
@@ -21,5 +25,9 @@ export const en: Translations = {
     players_removeTeamButton: "Remove Class",
     players_teamA: "team a",
     players_teamB: "team b",
+
+    // storage/group
+    storage_appError_groupAlreadyExists:
+      "A group with this name already exists",
   },
 };
