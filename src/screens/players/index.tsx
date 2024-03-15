@@ -7,9 +7,9 @@ import {
   ListEmpty,
 } from "@/components";
 import { useRoute } from "@react-navigation/native";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Alert, FlatList } from "react-native";
+import { Alert, FlatList, TextInput } from "react-native";
 import { Filter } from "./components/filter";
 import { PlayerCard } from "./components/playerCard";
 import * as S from "./styles";
@@ -25,6 +25,7 @@ type RouteParams = {
 export const Players: React.FC = () => {
   const { t } = useTranslation();
   const route = useRoute();
+  const newPlayerNameInputRef = useRef<TextInput>(null);
 
   const { group } = route.params as RouteParams;
   const [team, setTeam] = useState(t("players_teamA"));
@@ -46,6 +47,10 @@ export const Players: React.FC = () => {
 
     try {
       await playerAddByGroup(newPlayer, group);
+
+      newPlayerNameInputRef.current?.blur();
+      setNewPlayerName("");
+
       fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
@@ -80,9 +85,13 @@ export const Players: React.FC = () => {
       <HighLight title={group} subtitle={t("players_subtitle")} />
       <S.Form>
         <Input
+          inputRef={newPlayerNameInputRef}
+          value={newPlayerName}
           onChangeText={setNewPlayerName}
           placeholder={t("players_inputPlaceholder")}
           autoCorrect={false}
+          onSubmitEditing={handleAddPlayer}
+          returnKeyType="done"
         />
         <ButtonIcon
           icon={"Plus"}
