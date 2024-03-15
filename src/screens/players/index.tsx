@@ -18,6 +18,8 @@ import { playerAddByGroup } from "@/storage/player/playerAddByGroup";
 import { playersGetByGroupAndTeam } from "@/storage/player/playersGetByGroupAndTeam";
 import { PlayerStorageDTO } from "@/storage/player/playerStorageDTO";
 import { playerRemoveByGroup } from "@/storage/player/playerRemoveByGroup";
+import { groupRemoveByName } from "@/storage/group/groupRemoveByName";
+import { useNavigation } from "@react-navigation/native";
 
 type RouteParams = {
   group: string;
@@ -27,6 +29,7 @@ export const Players: React.FC = () => {
   const { t } = useTranslation();
   const route = useRoute();
   const newPlayerNameInputRef = useRef<TextInput>(null);
+  const navigation = useNavigation();
 
   const { group } = route.params as RouteParams;
   const [team, setTeam] = useState(t("players_teamA"));
@@ -83,6 +86,23 @@ export const Players: React.FC = () => {
     } catch (error) {
       console.log(error);
       Alert.alert("Remover pessoa", "Não foi possível remover essa pessoa");
+    }
+  };
+
+  const handleGroupRemove = () => {
+    Alert.alert("Remover", "Deseja remover o grupo?", [
+      { text: "Não", style: "cancel" },
+      { text: "Sim", onPress: () => groupRemove() },
+    ]);
+  };
+
+  const groupRemove = async () => {
+    try {
+      await groupRemoveByName(group);
+      navigation.navigate("groups");
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Remover grupo", "Não foi possível remover o grupo.");
     }
   };
 
@@ -144,7 +164,11 @@ export const Players: React.FC = () => {
           players.length === 0 && { flex: 1 },
         ]}
       />
-      <Button label={t("players_removeTeamButton")} layout="secondary" />
+      <Button
+        label={t("players_removeTeamButton")}
+        layout="secondary"
+        onPress={() => handleGroupRemove()}
+      />
     </S.Container>
   );
 };
