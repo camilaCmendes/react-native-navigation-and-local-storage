@@ -17,6 +17,7 @@ import { AppError } from "@/utils/AppError";
 import { playerAddByGroup } from "@/storage/player/playerAddByGroup";
 import { playersGetByGroupAndTeam } from "@/storage/player/playersGetByGroupAndTeam";
 import { PlayerStorageDTO } from "@/storage/player/playerStorageDTO";
+import { playerRemoveByGroup } from "@/storage/player/playerRemoveByGroup";
 
 type RouteParams = {
   group: string;
@@ -75,6 +76,16 @@ export const Players: React.FC = () => {
     }
   };
 
+  const handlePlayerRemove = async (playerName: string) => {
+    try {
+      await playerRemoveByGroup(playerName, group);
+      fetchPlayersByTeam();
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Remover pessoa", "Não foi possível remover essa pessoa");
+    }
+  };
+
   useEffect(() => {
     fetchPlayersByTeam();
   }, [team]);
@@ -119,7 +130,10 @@ export const Players: React.FC = () => {
         data={players}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <PlayerCard name={item.name} onRemove={() => null} />
+          <PlayerCard
+            name={item.name}
+            onRemove={() => handlePlayerRemove(item.name)}
+          />
         )}
         ListEmptyComponent={() => (
           <ListEmpty message={t("players_emptyListMessage")} />
