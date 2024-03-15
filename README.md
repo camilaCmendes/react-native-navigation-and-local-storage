@@ -2,6 +2,13 @@
 Este projeto é um aplicativo desenvolvido com React Native e Expo, focado em fornecer uma solução de navegação em pilhas que permite aos usuários cadastrar, 
 remover e gerenciar turmas e membros de equipes. Utilizando o armazenamento local do dispositivo, 
 o aplicativo assegura a preservação dos dados mesmo após o fechamento, garantindo uma experiência de usuário contínua e eficiente.
+
+<div  align="center" >
+  <img width="200" src="https://github.com/camilaCmendes/react-native-navigation-and-local-storage/assets/44913787/c090ba5c-95f4-4832-8da4-5666f0f5f588" alt="animated" />
+  <img width="200"  src="https://github.com/camilaCmendes/react-native-navigation-and-local-storage/assets/44913787/d4a7c672-896c-419c-9c4d-e2daa28fb0f5" alt="animated" />
+    <img width="200" src="https://github.com/camilaCmendes/react-native-navigation-and-local-storage/assets/44913787/55e8a086-2ed9-4c09-a397-f95b2a675812" alt="animated" />
+</div>
+
 # Tecnologias Utilizadas
 - **React Native** para o desenvolvimento da aplicação móvel, garantindo performance e uma ótima experiência do usuário em diferentes dispositivos.
 - **Expo** para simplificar o processo de desenvolvimento e deploy da aplicação, facilitando o uso de recursos nativos e a construção em diferentes plataformas.
