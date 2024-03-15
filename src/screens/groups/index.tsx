@@ -26,7 +26,10 @@ export const Groups: React.FC = () => {
       setIsLoading(false);
     } catch (error) {
       console.log(error);
-      Alert.alert("Turmas", "Não foi possível carregar as turmas");
+      Alert.alert(
+        t("groups_alertMessage_title"),
+        t("groups_alertMessage_description")
+      );
     } finally {
       setIsLoading(false);
     }

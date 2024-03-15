@@ -41,8 +41,8 @@ export const Players: React.FC = () => {
   const handleAddPlayer = async () => {
     if (newPlayerName.trim().length === 0) {
       return Alert.alert(
-        "Nova pessoa",
-        "Informe o nome da pessoa para adicionar."
+        t("players_alertMessage_addPlayer_title"),
+        t("players_alertMessage_addPlayer_description")
       );
     }
 
@@ -60,10 +60,16 @@ export const Players: React.FC = () => {
       fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
-        Alert.alert("Nova pessoa", error.message);
+        Alert.alert(
+          t("players_alertMessage_addPlayer_title"),
+          t(error.message)
+        );
       } else {
         console.log(error);
-        Alert.alert("Nova pessoa", "Não foi possível adicionar.");
+        Alert.alert(
+          t("players_alertMessage_addPlayer_title"),
+          t("players_alertMessage_addPlayer_description_error")
+        );
       }
     }
   };
@@ -77,8 +83,8 @@ export const Players: React.FC = () => {
     } catch (error) {
       console.log(error);
       Alert.alert(
-        "Pessoas",
-        "Não foi possível carregar as pessoas do time selecionado"
+        t("players_alertMessage_playersByTeam_title"),
+        t("players_alertMessage_playersByTeam_description")
       );
     } finally {
       setIsLoading(false);
@@ -91,15 +97,25 @@ export const Players: React.FC = () => {
       fetchPlayersByTeam();
     } catch (error) {
       console.log(error);
-      Alert.alert("Remover pessoa", "Não foi possível remover essa pessoa");
+      Alert.alert(
+        t("players_alertMessage_playerRemove_title"),
+        t("players_alertMessage_playerRemove_description")
+      );
     }
   };
 
   const handleGroupRemove = () => {
-    Alert.alert("Remover", "Deseja remover a turma?", [
-      { text: "Não", style: "cancel" },
-      { text: "Sim", onPress: () => groupRemove() },
-    ]);
+    Alert.alert(
+      t("players_alertMessage_groupRemove_title"),
+      t("players_alertMessage_groupRemove_description"),
+      [
+        { text: t("players_alertMessage_groupRemove_no"), style: "cancel" },
+        {
+          text: t("players_alertMessage_groupRemove_yes"),
+          onPress: () => groupRemove(),
+        },
+      ]
+    );
   };
 
   const groupRemove = async () => {
